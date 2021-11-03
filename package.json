@@ -1,0 +1,60 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "bootstrap": "yarn install; lerna bootstrap;",
+    "start": "lerna run start --parallel",
+    "package:user": "node -r ./dotenv.config.js node_modules/.bin/lerna run --scope user --stream dev",
+    "build:user": "node -r ./dotenv.config.js node_modules/.bin/lerna run --scope user --stream build",
+    "run:build:user": "lerna run start --scope user",
+    "lint": "eslint --ignore-path .eslintignore",
+    "fix": "yarn lint:ts --fix",
+    "lint-staged": "lint-staged",
+    "format": "eslint -c .eslintrc.js --ignore-path .eslintignore --fix",
+    "git-add": "git add ."
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "yarn stylelint",
+      "yarn format",
+      "git add"
+    ]
+  },
+  "pre-commit": [
+    "lint-staged"
+  ],
+  "devDependencies": {
+    "@types/node": "^15.6.1",
+    "@types/react": "^17.0.8",
+    "@types/react-dom": "^17.0.5",
+    "eslint": "^7.27.0",
+    "lerna": "^4.0.0",
+    "prettier": "^2.3.0",
+    "stylelint-config-recommended": "^5.0.0",
+    "typescript": "^4.3.2"
+  },
+  "dependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.14.0",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
+    "axios": "^0.21.1",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-transform-exports": "^1.1.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
+    "husky": "^6.0.0",
+    "lint-staged": "^11.0.0",
+    "moment": "^2.29.1",
+    "pre-commit": "^1.2.2",
+    "react-query": "^3.16.0",
+    "styled-components": "^5.3.0",
+    "stylelint": "^13.13.1",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.10.0"
+  }
+}

@@ -1,0 +1,29 @@
+# dependencies
+node_modules
+
+# testing
+storybook-static
+
+# local env files
+.env.local
+.env.production
+.env.dev
+.env
+
+# next.js
+.next
+
+# production
+dist
+build/
+
+# misc
+.DS_Store
+.idea
+
+# debug
+lerna-debug.log
+yarn-error.log
+.eslintcache
+
+
